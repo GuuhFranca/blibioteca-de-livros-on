@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Minha Biblioteca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Incorporado */
+        :root {
+            --cor-principal: #3f51b5; /* Azul da lombada */
+            --cor-secundaria: #ffeb3b; /* Amarelo de destaque */
+            --cor-fundo: #f4f4f9;
+            --cor-texto: #333;
+            --cor-sidebar: #2c3e50; /* Azul escuro para a barra lateral */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--cor-fundo);
+            display: flex;
+            min-height: 100vh;
+            color: var(--cor-texto);
+        }
+
+        /* --- Sidebar (Navegação) --- */
+        .sidebar {
+            width: 250px;
+            background-color: var(--cor-sidebar);
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            color: var(--cor-secundaria); /* Título em destaque */
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s, border-left 0.3s;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+        
+        /* Animação e estilo de item ativo/hover */
+        .sidebar ul li a:hover,
+        .sidebar ul li.active a {
+            background-color: var(--cor-principal);
+            border-left: 5px solid var(--cor-secundaria);
+        }
+
+        /* --- Conteúdo Principal --- */
+        .main-content {
+            margin-left: 250px; /* Ajusta o conteúdo para a direita da sidebar */
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            /* Animação de entrada */
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .header h1 {
+            color: var(--cor-principal);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .book-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid #eee;
+            /* Animação de escala suave ao passar o mouse */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .book-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .book-card h3 {
+            color: var(--cor-principal);
+            margin: 10px 0 5px 0;
+            font-size: 1.1em;
+        }
+
+        .book-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .book-card .cover {
+            width: 80px;
+            height: 120px;
+            background-color: var(--cor-secundaria);
+            border: 2px solid var(--cor-principal);
+            margin: 0 auto 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: var(--cor-principal);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2><i class="fas fa-book-reader"></i> Minha Estante</h2>
+        <ul>
+            <li class="active"><a href="#"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#"><i class="fas fa-books"></i> Meus Livros</a></li>
+            <li><a href="#"><i class="fas fa-search"></i> Pesquisar</a></li>
+            <li><a href="#"><i class="fas fa-bookmark"></i> Favoritos</a></li>
+            <li><a href="#"><i class="fas fa-user-circle"></i> Perfil</a></li>
+            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Bem-vindo(a) de volta!</h1>
+            <div class="user-info">
+                Olá, **Leitor(a) Fiel** <i class="fas fa-user ml-2"></i>
+            </div>
+        </div>
+
+        <h2>📖 Recomendados para Você</h2>
+        <p style="margin-bottom: 25px; color: #666;">Descubra novos títulos baseados no seu histórico de leitura.</p>
+
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="cover"><i class="fas fa-feather-alt"></i></div>
+                <h3>Título do Livro 1</h3>
+                <p>Autor Famoso</p>
+            </div>
+            
+            <div class="book-card">
+                <div class="cover"><i class="fas fa-flask"></i></div>
+                <h3>Teoria Química</h3>
+                <p>Cientista Desconhecido</p>
+            </div>
+
+            <div class="book-card">
+                <div class="cover"><i class="fas fa-globe-americas"></i></div>
+                <h3>Viagens pelo Mundo</h3>
+                <p>Aventureiro Anônimo</p>
+            </div>
+            
+            <div class="book-card">
+                <div class="cover"><i class="fas fa-chart-line"></i></div>
+                <h3>Finanças Pessoais</h3>
+                <p>Coach da Riqueza</p>
+            </div>
+            
+            </div>
+        
+    </div>
+</body>
+</html>

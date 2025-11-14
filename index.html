@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Biblioteca Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Incorporado para Simplificação */
+        :root {
+            --cor-principal: #3f51b5; /* Azul que remete a sofisticação/livros */
+            --cor-secundaria: #ff3b93; /* Amarelo que remete a páginas antigas */
+            --cor-fundo: #f4f4f9;
+            --cor-texto: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #e0e0e9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--cor-texto);
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            /* Animação inicial de entrada */
+            animation: fadeIn 1s ease-out;
+            border-left: 10px solid var(--cor-principal); /* Borda lateral como se fosse a lombada de um livro */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--cor-principal));
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 400;
+            color: var(--cor-principal);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            border-color: var(--cor-principal);
+            outline: none;
+            box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--cor-principal);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #303f9f;
+            transform: translateY(-2px); /* Animação de elevação ao passar o mouse */
+        }
+
+        .register-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--cor-principal);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .register-link:hover {
+            color: #303f9f;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1><i class="fas fa-book-open"></i> Biblioteca Online</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+            </div>
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-login">Entrar na Biblioteca</button>
+        </form>
+        <a href="#" class="register-link">Não tem conta? Cadastre-se!</a>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lógica de autenticação e redirecionamento aqui
+            alert('Tentativa de Login...');
+            
+            // Exemplo de animação com JS: mudar a cor do botão ao clicar
+            const btn = document.querySelector('.btn-login');
+            btn.style.backgroundColor = '#4caf50'; // Verde de sucesso temporário
+            btn.textContent = 'Acessando...';
+            
+            setTimeout(() => {
+                btn.style.backgroundColor = 'var(--cor-principal)';
+                btn.textContent = 'Entrar na Biblioteca';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
+<head>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const container = document.querySelector('.login-container');
+            const btn = document.querySelector('.btn-login');
+    
+            // 1. Mostrar estado de processamento
+            btn.textContent = 'Verificando credenciais...';
+            btn.disabled = true;
+    
+            // 2. Simular a requisição de rede (por 1.5 segundo)
+            setTimeout(() => {
+                // Sucesso: Mudar para verde antes de sair
+                btn.textContent = 'Acesso Concedido!';
+                btn.style.backgroundColor = '#4caf50'; // Verde de sucesso
+                
+                // 3. Adicionar uma animação de "saída" ao container
+                container.style.animation = 'fadeOut 0.7s ease-in forwards';
+                
+                // 4. Redirecionar após a animação de saída
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html'; 
+                }, 700); // 700ms é a duração da animação 'fadeOut'
+                
+            }, 1500); // Simula um atraso de 1.5s para a autenticação
+    
+        });
+    </script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const emailInput = document.getElementById('email').value;
+            const senhaInput = document.getElementById('senha').value;
+            const container = document.querySelector('.login-container');
+            const btn = document.querySelector('.btn-login');
+            
+            // --- 🔑 CREDENCIAIS DE TESTE ---
+            const USER_EMAIL = 'leitor@biblioteca.com';
+            const USER_PASS = '123456';
+            // ------------------------------
+            
+            // 1. Mostrar estado de processamento
+            btn.textContent = 'Verificando credenciais...';
+            btn.disabled = true;
+    
+            // 2. Simular a requisição de rede (por 1.5 segundo)
+            setTimeout(() => {
+                if (emailInput === USER_EMAIL && senhaInput === USER_PASS) {
+                    // SUCESSO!
+                    btn.textContent = 'Acesso Concedido!';
+                    btn.style.backgroundColor = '#4caf50'; // Verde de sucesso
+                    
+                    // Adicionar animação de "saída" e redirecionar
+                    container.style.animation = 'fadeOut 0.7s ease-in forwards';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html'; 
+                    }, 700); 
+    
+                } else {
+                    // FALHA!
+                    btn.textContent = 'Credenciais Inválidas. Tente Novamente.';
+                    btn.style.backgroundColor = '#f44336'; // Vermelho de erro
+                    
+                    // Reabilita o botão e limpa a mensagem após um tempo
+                    setTimeout(() => {
+                        btn.textContent = 'Entrar na Biblioteca';
+                        btn.style.backgroundColor = 'var(--cor-principal)';
+                        btn.disabled = false;
+                    }, 2000);
+                }
+            }, 1500); // Simula atraso da autenticação
+        });
+    </script>
