@@ -1,0 +1,107 @@
+/* --- Estilos Globais e Reset Simples --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef; /* Um cinza claro de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* --- Container Principal do Login --- */
+.login-container {
+    background: #ffffff; /* Fundo branco para o card */
+    padding: 2.5rem;
+    border-radius: 10px; /* Cantos arredondados suaves */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+    width: 100%;
+    max-width: 400px; /* Largura máxima em desktops */
+    margin: 1rem; /* Margem para evitar que cole nas bordas em mobile */
+}
+
+/* --- Títulos e Subtítulos --- */
+.login-form h2 {
+    text-align: center;
+    color: #0056b3; /* Cor primária azul para o título */
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.login-form p {
+    text-align: center;
+    color: #6c757d; /* Texto secundário */
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* --- Grupos de Input (Label + Input) --- */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da; /* Borda padrão */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease; /* Transição suave na interação */
+}
+
+.input-group input:focus {
+    border-color: #007bff; /* Borda azul ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra suave ao focar */
+}
+
+/* --- Botão de Submissão --- */
+button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007bff; /* Cor principal do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+}
+
+/* --- Links do Rodapé (Esqueceu senha, Criar conta) --- */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.footer-links a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}

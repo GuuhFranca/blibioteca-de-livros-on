@@ -1,155 +1,75 @@
-
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Minha Biblioteca</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="styles.css"> 
-
-    <style>
-        /*
-        * CSS Adicional: Esta animação DEVE estar no styles.css, 
-        * mas é repetida aqui apenas para garantia de funcionamento do efeito sequencial.
-        */
-        @keyframes slideUpAndFade {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated-item {
-            opacity: 0; 
-            animation: slideUpAndFade 0.6s ease-out forwards;
-        }
-    </style>
-
+    <title>Dashboard do Leitor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="dashboard-page">
+<body>
+    <div class="dashboard-container">
+        <!-- Menu Lateral -->
+        <aside class="sidebar">
+            <div class="logo">Minha Biblioteca</div>
+            <nav>
+                <a href="dashboard.html" class="active">Meus Livros</a>
+                <a href="#">Buscar Livros</a>
+                <a href="#">Reservas</a>
+                <a href="#">Perfil</a>
+                <a href="login.html">Sair</a>
+            </nav>
+        </aside>
 
-    <div class="sidebar">
-        <h2><i class="fas fa-book-reader"></i> Minha Estante</h2>
-        <ul>
-            <li class="active"><a href="#"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="#"><i class="fas fa-books"></i> Meus Livros</a></li>
-            <li><a href="#"><i class="fas fa-search"></i> Pesquisar</a></li>
-            <li><a href="#"><i class="fas fa-bookmark"></i> Favoritos</a></li>
-            <li><a href="#"><i class="fas fa-user-circle"></i> Perfil</a></li>
-            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
-        </ul>
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Painel do Leitor</h1>
+                <p>Bem-vindo(a), Maria. Veja o status dos seus empréstimos.</p>
+            </header>
+
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Livros Emprestados</h3>
+                    <p>3 de 5</p>
+                </div>
+                <div class="card">
+                    <h3>Atrasos</h3>
+                    <p class="late">1</p>
+                </div>
+                <div class="card">
+                    <h3>Reservas Ativas</h3>
+                    <p>2</p>
+                </div>
+            </div>
+
+            <section class="book-list-section">
+                <h2>Itens Emprestados</h2>
+                <div class="book-item">
+                    <span>O Senhor dos Anéis</span>
+                    <span>Data de devolução: 25/11/2025</span>
+                </div>
+                <div class="book-item late-item">
+                    <span>1984</span>
+                    <span>Data de devolução: 10/11/2025 (Atrasado)</span>
+                </div>
+                <div class="book-item">
+                    <span>Duna</span>
+                    <span>Data de devolução: 01/12/2025</span>
+                </div>
+            </section>
+        </main>
     </div>
-
-    <div class="main-content">
-        <div class="header">
-            <h1>Bem-vindo(a) de volta!</h1>
-            <div class="user-info">
-                Olá, **Leitor(a) Fiel** <i class="fas fa-user ml-2"></i>
-            </div>
-        </div>
-
-        <h2>📖 Recomendados para Você</h2>
-        <p style="margin-bottom: 25px; color: #666;">Descubra novos títulos baseados no seu histórico de leitura.</p>
-
-        <div class="book-grid">
-            
-            <div class="book-card">
-                <div class="cover"><i class="fas fa-feather-alt"></i></div>
-                <h3>O Mistério da Página</h3>
-                <p>A. Lenda Literária</p>
-            </div>
-            
-            <div class="book-card">
-                <div class="cover"><i class="fas fa-flask"></i></div>
-                <h3>Fundamentos de CSS</h3>
-                <p>O Programador</p>
-            </div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const bookCards = document.querySelectorAll('.book-card');
-        const delayStep = 0.1; // Atraso de 100ms entre cada cartão
-
-        // Aplica a classe de animação e um atraso único a cada card
-        bookCards.forEach((card, index) => {
-            // Adiciona a classe de animação
-            card.classList.add('animated-item');
-
-            // Define o atraso baseado no índice
-            const delay = index * delayStep + 0.3; // +0.3s para esperar o cabeçalho carregar
-            card.style.animationDelay = `${delay}s`;
-        });
-        
-        // Exemplo de interatividade: Alerta ao clicar no livro
-        bookCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const title = card.querySelector('h3').textContent;
-                alert(`Você clicou para ler: "${title}". Redirecionando para a página de leitura...`);
-                // Aqui você colocaria a lógica de redirecionamento para o leitor de e-book
-            });
-        });
-    });
-</script>
 </body>
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const bookCards = document.querySelectorAll('.book-card');
-        const delayStep = 0.1; // Atraso de 100ms entre cada cartão
 
-        // Aplica a classe de animação e um atraso único a cada card
-        bookCards.forEach((card, index) => {
-            // Adiciona a classe de animação
-            card.classList.add('animated-item');
-
-            // Define o atraso baseado no índice
-            const delay = index * delayStep + 0.3; // +0.3s para esperar o cabeçalho carregar
-            card.style.animationDelay = `${delay}s`;
-        });
-        
-        // Exemplo de interatividade: Alerta ao clicar no livro
-        bookCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const title = card.querySelector('h3').textContent;
-                alert(`Você clicou para ler: "${title}". Redirecionando para a página de leitura...`);
-                // Aqui você colocaria a lógica de redirecionamento para o leitor de e-book
-            });
-        });
-    });
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Biblioteca Online</title>
+</head>
+<body>
+    <h1>Bem-vindo à sua biblioteca!</h1>
+    <p>Você acessou com sucesso.</p>
+    <a href="index.html">Sair</a>
 </body>
 </html>
-<div class="stats-grid">
-    <div class="stat-card animated-item" style="animation-delay: 0.5s;">
-        <i class="fas fa-book-open stat-icon"></i>
-        <div class="stat-info">
-            <p class="stat-value">5</p>
-            <p class="stat-label">Lendo Atualmente</p>
-        </div>
-    </div>
-
-    <div class="stat-card animated-item" style="animation-delay: 0.7s;">
-        <i class="fas fa-bookmark stat-icon"></i>
-        <div class="stat-info">
-            <p class="stat-value">24</p>
-            <p class="stat-label">Livros Finalizados</p>
-        </div>
-    </div>
-
-    <div class="stat-card animated-item" style="animation-delay: 0.9s;">
-        <i class="fas fa-clock stat-icon"></i>
-        <div class="stat-info">
-            <p class="stat-value">4.2h</p>
-            <p class="stat-label">Tempo Médio/Semana</p>
-        </div>
-    </div>
-</div>
-
-<h2 style="margin-top: 40px;">📖 Recomendados para Você</h2>
